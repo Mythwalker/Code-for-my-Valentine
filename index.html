@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code for My Valentine</title>
+    <style>
+/* General Styles */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background: url(valentine-s-day-concept-background-illustration-3d-red-and-pink-paper-hearts-with-white-square-frame-cute-love-sale-banner-or-greeting-card-free-vector.jpg);
+    color: rgb(231, 110, 110);
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-size: cover;
+}
+
+/* Page Styling */
+.page {
+    display: none;
+    padding: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+#welcome-page {
+    display: block;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Headings */
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 36px;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 24px;
+}
+
+/* Highlighted Text */
+.highlight {
+    color: #bc2c2c;
+    font-weight: bold;
+}
+
+/* Buttons */
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    background: #ffeb3b;
+    color: #d32f2f;
+    cursor: pointer;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background: #ffca28;
+    transform: scale(1.1);
+}
+
+button:active {
+    transform: scale(0.9);
+}
+
+/* Emoji Shower Effect */
+.emoji {
+    position: absolute;
+    font-size: 24px;
+    animation: fall linear infinite;
+    z-index: -1; /* Sends emojis behind all text and buttons */
+}
+
+
+@keyframes fall {
+    0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
+/* Inputs */
+input {
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid rgb(226, 128, 128);
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.2);
+    color: rgb(236, 102, 102);
+}
+
+input::placeholder {
+    color: rgba(238, 130, 130, 0.7);
+}
+
+/* Romantic Activities */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    font-size: 18px;
+    padding: 8px;
+}
+
+/* Sad Poetry */
+blockquote {
+    font-style: italic;
+    font-size: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-top: 10px;
+}
+.congrats-msg {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    background: #ffeb3b;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #d32f2f;
+    z-index: 1000;
+    animation: fadeInOut 2s ease-in-out;
+}
+
+.wedding-card {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    background: #fff5f8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 300px;
+    font-family: 'Arial', sans-serif;
+    z-index: 1000;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.wedding-card h2 {
+    color: #e91e63;
+    font-size: 22px;
+}
+
+.wedding-card h3 {
+    font-size: 20px;
+    color: #d32f2f;
+}
+
+.wedding-card p {
+    font-size: 16px;
+    color: #555;
+}
+
+.wedding-card .sponsor {
+    font-size: 14px;
+    font-weight: bold;
+    color: #e91e63;
+    margin-top: 10px;
+}
+
+.wedding-card button {
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.wedding-card button:hover {
+    background-color: #c2185b;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+
+
+    </style>
+</head>
+<body>
+    <audio id="bg-music" src="romantic-saxophone-244539.mp3" loop autoplay></audio>
+
+    <div id="welcome-page" class="page">
+        <h1>Welcome to <span class="highlight">Code for My Valentine</span></h1>
+        <h2>Powered by Google Developer Groups - GHRCEM</h2>
+        <button id="start-btn">Start</button>
+        <div id="emoji-shower"></div>
+    </div>
+
+    <div id="question-page" class="page hidden">
+        <h2>Are you single or in a relationship?</h2>
+        <button id="single-btn">Single</button>
+        <button id="relationship-btn">In a Relationship</button>
+    </div>
+
+    <div id="relationship-page" class="page hidden">
+        <h2>Enter Couple's Names</h2>
+        <input type="text" id="name1" placeholder="Your Name">
+        <input type="text" id="name2" placeholder="Partner's Name">
+        <button id="calculate-love">Calculate Love %</button>
+        <h3 id="love-result"></h3>
+    
+    </div>
+
+    <div id="single-page" class="page hidden">
+        <h2>आपके लिए एक शेर अर्ज करते हैं की</h2>
+        <h2 id="sad-sher"></h2>
+        <audio id="sad-music" src="sad_music.mp3" loop></audio>
+        <h2>Ask Someone Out! 😜</h2>
+        <p>Feeling brave? Try sending this:</p>
+        <blockquote>"Are you a magician? Because whenever I look at you, everyone else disappears! ✨"</blockquote>
+        <button id="send-pickup">Send Pickup Line</button>
+        <p id="pickup-response"></p>
+    </div>
+
+    <script>
+   document.addEventListener("DOMContentLoaded", function () {
+    const startBtn = document.getElementById("start-btn");
+    const singleBtn = document.getElementById("single-btn");
+    const relationshipBtn = document.getElementById("relationship-btn");
+    const calculateLoveBtn = document.getElementById("calculate-love");
+    const sendPickupBtn = document.getElementById("send-pickup");
+
+    const welcomePage = document.getElementById("welcome-page");
+    const questionPage = document.getElementById("question-page");
+    const relationshipPage = document.getElementById("relationship-page");
+    const singlePage = document.getElementById("single-page");
+
+    const loveResult = document.getElementById("love-result");
+    const sadSher = document.getElementById("sad-sher");
+    const sadMusic = document.getElementById("sad-music");
+    const pickupResponse = document.getElementById("pickup-response");
+
+    const sadShayari = [
+        "दिल ही तो है, न संग-ओ-ख़िश्त, दर्द से भर न आए क्यों?",
+        "कहीं किसी रोज़ यूँ भी होता, हमारी हालत तुम्हारी होती।",
+        "जिंदगी से बस यही गिला है, ख़ुशी के बाद ही ग़म क्यों मिला है?",
+        "इश्क में हम तुम्हें क्या बतायें, कैसे-कैसे मुक़ाम से गुज़रे हैं।"
+    ];
+
+    function showPage(page) {
+        document.querySelectorAll(".page").forEach(p => p.style.display = "none");
+        page.style.display = "block";
+    }
+    // 🎵 Background Music
+    const bgMusic = new Audio("your_background_music.mp3");
+    bgMusic.loop = true;
+
+    // 🎵 Wedding Music (Starts at 2:05)
+    const weddingMusic = new Audio("your_wedding_music.mp3");
+
+    startBtn.addEventListener("click", function () {
+        this.style.transform = "scale(2)";
+        this.style.opacity = "0";
+        setTimeout(() => {
+            welcomePage.style.display = "none";
+            questionPage.style.display = "block";
+            startEmojiShower();
+            bgMusic.play().catch(error => console.log("Autoplay blocked:", error));
+        }, 500);
+    });
+
+    singleBtn.addEventListener("click", function () {
+        showPage(singlePage);
+        sadSher.innerText = sadShayari[Math.floor(Math.random() * sadShayari.length)];
+        sadMusic.play();
+    });
+
+    relationshipBtn.addEventListener("click", function () {
+        showPage(relationshipPage);
+    });
+
+    calculateLoveBtn.addEventListener("click", function () {
+    let lovePercent = Math.floor(Math.random() * 100) + 1;
+    loveResult.innerText = `Love Percentage: ❤️ ${lovePercent}%`;
+
+    let message = "";
+    if (lovePercent > 90) {
+        message = "You're a match made in heaven! 💍👩‍❤️‍👨";
+        startHeartAnimation();
+    } else if (lovePercent > 70) {
+        message = "Strong bond! Just avoid arguments about food. 🍕😂";
+        startHeartAnimation();
+    } else if (lovePercent > 50) {
+        message = "Could work! Maybe some romantic dates? 🌹";
+    } else if (lovePercent > 30) {
+        message = "Uh-oh! Some compromises needed. 😬";
+    } else {
+        message = "Oops! Maybe just stay best friends? 😅";
+    }
+
+    loveResult.innerHTML += `<p>${message}</p>`;
+
+    // Wedding Card Feature
+    let name1 = document.getElementById("name1").value;
+    let name2 = document.getElementById("name2").value;
+    
+    if (lovePercent > 85 && name1 && name2) {
+
+        showCongratulation(name1, name2, lovePercent);
+        
+ 
+        setTimeout(() => {
+            displayWeddingCard(name1, name2, lovePercent);
+        }, 5000);
+    }
+});
+
+// Function to Show Congratulations Message
+function showCongratulation(name1, name2, lovePercent) {
+    let congratsMsg = document.createElement("div");
+    congratsMsg.classList.add("congrats-msg");
+    congratsMsg.innerHTML = `
+        <h2>🎉 Congratulations! 🎉</h2>
+        <p>${name1} ❤️ ${name2}</p>
+        <p>Your Love Percentage is: ${lovePercent}%</p>
+    `;
+
+    document.body.appendChild(congratsMsg);
+    
+    // Remove the message after 2 seconds
+    setTimeout(() => congratsMsg.remove(), 5000);
+}
+
+
+function displayWeddingCard(name1, name2, lovePercent) {
+    let weddingCard = document.createElement("div");
+    weddingCard.classList.add("wedding-card");
+    weddingCard.innerHTML = `
+        <h2>🎉 Wedding Invitation 🎉</h2>
+        <p>You're Invited to Celebrate the Union of</p>
+        <h3>${name1} 💞 ${name2}</h3>
+        <p>On a Beautiful Date Soon! 🗓️</p>
+        <p>Location: Your Heart ❤️</p>
+        <p>Dress Code: Love & Happiness 😍</p>
+        <p class="sponsor">Sponsored by: Google Developer Groups GHRCEM</p>
+        <button onclick="this.parentElement.remove(); stopWeddingMusic();">Close</button>
+    `;
+
+    document.body.appendChild(weddingCard);
+
+        // Stop Background Music
+        bgMusic.pause();
+
+        // Play Wedding Music from 2:05 (125 seconds)
+        weddingMusic.currentTime = 125;
+        weddingMusic.play();
+    }
+
+    // 🎊 Close Wedding Card
+    window.closeWeddingCard = function () {
+        let weddingCard = document.querySelector(".wedding-card");
+        if (weddingCard) {
+            document.body.removeChild(weddingCard);
+        }
+        weddingMusic.pause();
+        weddingMusic.currentTime = 0;
+        bgMusic.play();
+    };
+
+function startHeartAnimation() {
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("emoji");
+        heart.innerText = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+        heart.style.position = "absolute";
+        heart.style.top = "-10px";
+        heart.style.zIndex = "999";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+    }, 300);
+}
+
+
+    sendPickupBtn.addEventListener("click", function () {
+        pickupResponse.innerText = "Your pickup line has been sent! Fingers crossed 🤞😂";
+    });
+
+    function startEmojiShower() {
+        setInterval(() => {
+            const emojiArray = ["❤️", "💖", "💘", "💕", "😍"];
+            const emoji = document.createElement("div");
+            emoji.classList.add("emoji");
+            emoji.innerText = emojiArray[Math.floor(Math.random() * emojiArray.length)];
+            emoji.style.left = Math.random() * 25 + "vw";
+            emoji.style.animationDuration = Math.random() * 3 + 2 + "s";
+            emoji.style.position = "absolute";
+            emoji.style.top = "-10px";
+            emoji.style.zIndex = "999";
+            document.body.appendChild(emoji);
+            setTimeout(() => emoji.remove(), 7000);
+        }, 300);
+    }
+});
+
+
+    </script>
+</body>
+</html>
